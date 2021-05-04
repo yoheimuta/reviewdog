@@ -41,11 +41,6 @@ func NewGitLabMergeRequestDiff(cli *gitlab.Client, owner, repo string, pr int, s
 	}, nil
 }
 
-// Diff returns a diff of MergeRequest. It runs `git diff` locally instead of
-// diff_url of GitLab Merge Request because diff of diff_url is not suited for
-// comment API in a sense that diff of diff_url is equivalent to
-// `git diff --no-renames`, we want diff which is equivalent to
-// `git diff --find-renames`.
 func (g *MergeRequestDiff) Diff(ctx context.Context) ([]byte, error) {
 	mr, _, err := g.cli.MergeRequests.GetMergeRequest(g.projects, g.pr, nil)
 	if err != nil {
