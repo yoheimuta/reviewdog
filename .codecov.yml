@@ -7,4 +7,8 @@ coverage:
       default:
         target: 0%
 
+# https://docs.codecov.com/docs/github-checks#disabling-github-checks-patch-annotations-via-yaml
+github_checks:
+    annotations: false
+
 comment: false
